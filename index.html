@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konser ala ala</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <a href="#" class="logo">ADR</a>
+    <nav class="nav-items">
+      <a href="#">Home</a>
+      <a href="#tickets">Tickets</a>
+      <a href="#ticketForm">Register</a>
+      <a href="#sponsor-section">sponsor</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <div class="intro">
+      <h1>Coldplay Concert</h1>
+      <p>Gelora Bung Karno Stadium Jakarta</p>
+      <p>Wednesday November 15, 2024</p>
+      <button>Pesan Sekarang</button>
+    </div>
+
+    <div id="tickets">
+      <h2>Pilih Tiket</h2>
+      <div class="ticket-section">
+        <img src="./img/p1.png" alt="Concert Image" class="ticket-image">
+        <div class="ticket-types">
+          <div class="type">
+            <h3>VIP</h3>
+            <p>Rp. 250.000</p>
+          </div>
+          <div class="type">
+            <h3>Lower BOX</h3>
+            <p>Rp. 150.000</p>
+          </div>
+          <div class="type">
+            <h3>Upper Box</h3>
+            <p>Rp. 80.000</p>
+          </div>
+          <div class="type">
+            <h3>Upper Box</h3>
+            <p>Rp. 45.000</p>
+          </div>
+        </div>
+      </div>
+      <button class="order-button">Pesan Sekarang</button>
+    </div>
+  </main>
+  <div class="form-container">
+    <form id="ticketForm">
+        <h2>Register</h2>
+        <label for="nik">NIK</label>
+        <input type="text" id="nik" name="nik" required>
+
+      <label for="name">Nama</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="phone">Nomor HP</label>
+      <input type="tel" id="phone" name="phone" required>
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="address">Alamat</label>
+      <textarea id="address" name="address" required></textarea>
+      
+      <label for="ticket">Jenis Tiket</label>
+      <select id="ticket" name="ticket" required>
+        <option value="VIP">VIP</option>
+        <option value="Gold">LOWER BOX</option>
+        <option value="Silver">UPPER BOX</option>
+      </select>
+      
+      <div class="button-container">
+        <button type="submit">Submit</button>
+        <button type="reset">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Sponsor Section -->
+<div id="sponsor-section">
+    <h2>Sponsors</h2>
+    <div class="sponsors">
+      <div class="sponsor"><img src="./img/p2.jpeg" alt="Gambar sponsor"></div>
+      <div class="sponsor"><img src="./img/p3.jpeg" alt="Gambar sponsor"></div>
+      <div class="sponsor"><img src="./img/p4.jpeg" alt="Gambar sponsor"></div>
+      <div class="sponsor"><img src="./img/p5.jpeg" alt="Gambar sponsor"></div>
+      <div class="sponsor"><img src="./img/p6.jpeg" alt="Gambar sponsor"></div>
+      <div class="sponsor"><img src="./img/p7.jpeg" alt="Gambar sponsor"></div>
+    </div>
+  </div>
+
+  <div id="contact" class="contact-section">
+    <h2>Hubungi CS</h2>
+    <form id="contactForm">
+        <label for="name">Nama</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="phone">Nomor HP</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Pesan</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <div class="button-container">
+            <button type="button" onclick="submitForm()">SUBMIT</button>
+            <button type="reset">CANCEL</button>
+        </div>
+    </form>
+</div>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="copy">&copy; 2024 Abrar.DRR</div>
+    <div class="bottom-links">
+      <div class="links">
+        <span>More Info</span>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="links">
+        <span>Social Links</span>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/abrar.drr?utm_source=qr&igsh=MXJtN2IzaHA0OG91ag=="><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    document.getElementById('ticketForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      let message = 'Registration Successful!\\n\\n';
+      formData.forEach((value, key) => {
+        message += `${key}: ${value}\\n`;
+      });
+      alert(message);
+    });
+  </script>
+
+  <script>
+    function submitForm() {
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+    
+        const whatsappNumber = '00000';
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=
+            Nama: ${name}%0A
+            Nomor HP: ${phone}%0A
+            Email: ${email}%0A
+            Pesan: ${message}`;
+    
+        window.open(whatsappURL, '_blank');
+    }
+    
+  </script>
+</body>
+</html>
